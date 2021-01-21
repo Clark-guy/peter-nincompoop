@@ -1,0 +1,16 @@
+sprite walk starts
+
+15, 5
+30, 5
+45, 5
+
+
+TODO list
+
+fix time.sleep to use game clock instead
+entering buildings / new areas
+fix it so map doesnt move but player / camera does
+collision
+other characters
+make an actual map / characters / have an actual idea for a game
+
