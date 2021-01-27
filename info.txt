@@ -14,3 +14,21 @@ collision
 other characters
 make an actual map / characters / have an actual idea for a game
 
+
+to do stardew style relationships, add a value for each new person which refers to how well you know them
+
+make it seem like the characters continued to exist even when you left the room
+
+
+
+guy will start in a river after a fire
+	--water mechanics? different walk/still animations for when on water, or map changes entirely
+river is like a metaphor for life and shit like biblical rebirth also rivers sustain life / womb
+fire is kinda that too i guess whatever more like the end of life
+
+guy will be like umm what do i um do? 
+
+where do i want this story to go
+	0 build relationships with people
+		0 help rebuild place after fire, meet new people
+	0 character levl ups and shit to attain (why? to get better loot? what drives most games in this way)

@@ -33,7 +33,7 @@ pygame.mixer.init()
 music = pygame.mixer.music
 music.load("music16.wav")
 music.set_volume(.2)
-music.play(loops=1)
+music.play(loops=-1)
 #foot = [pygame.mixer.Sound("sounds/footstep.wav"), pygame.mixer.Sound("sounds/footstep0.wav")]
 #this keeps crashing the game. maybe an issue with initialization or some shit i cant tell. try and get it to play slower
 foot = pygame.mixer.Sound("sounds/footstep.wav")
@@ -114,6 +114,9 @@ while True:
     if keys[0] or keys[1] or keys[2] or keys[3]:
         if friend.get_facing() == True:
             #how to make counter update after certain change in time
+            #better way: just do if gameCounter % num == 0, where num increases for larger increments. game counter
+            # starts at 0, this way i can keep track of everything with one counter rather than several. look into
+            # pygame game counter
             if (friend.get_last_updated() >= 10):
                 counter = (counter + 1) % len(friendSprites)
                 friend.set_last_updated(0)
