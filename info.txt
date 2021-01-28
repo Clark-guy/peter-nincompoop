@@ -1,3 +1,5 @@
+all sprites should be scaled up to 500% (5x) the size of pixelated sprites.
+
 sprite walk starts
 
 15, 5

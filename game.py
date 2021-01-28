@@ -20,7 +20,7 @@ width, height = settings.screen_width, settings.screen_height
 keys = [False,False,False,False,False,False]
 paused = False
 screen = pygame.display.set_mode((width, height))
-bg = pygame.image.load("resources/bg1.png")
+bg = pygame.image.load("resources/bg2.png")
 text = "hello"
 font = pygame.font.Font(None, 24)
 #curMessage = font.render(text,True, WHITE)
@@ -41,16 +41,23 @@ foot = pygame.mixer.Sound("sounds/footstep.wav")
 
 
 #make guy
-pSpeed = 3
+pSpeed = 30
 counter = 0
-friendSprites = ["resources/friend.png", "resources/friend1.png", "resources/friend.png", "resources/friend2.png"]
+friendSprites = ["resources/friendWalkCycle300/friend.png", "resources/friendWalkCycle300/friend1.png", "resources/friendWalkCycle300/friend.png", "resources/friendWalkCycle300/friend2.png"]
 friend = player("friend", False, 10, 8, friendSprites[0],True)
 friendView = pygame.image.load(friend.get_sprite())
 friendWalk1 = pygame.image.load(friendSprites[1])
 friendWalk2 = pygame.image.load(friendSprites[2])
 friendRect = friendView.get_rect()
-playerPos = [100-(friendRect[2]/2), 100-(friendRect[3]/2)]
-screenPos = [0,0]
+playerPos = [width/2-(friendRect[2]/2), height/2-(friendRect[3]/2)]
+screenPos = [-100,-100]
+
+
+#make new guy
+quack = person("quackers", False, 10, 8, "resources/guy0.png", True)
+quackView = pygame.image.load(quack.get_sprite())
+quackPos = [300, 300]
+
 
 #animation change stuff
 initTime = 0
@@ -64,18 +71,20 @@ initTime = 0
 
 
 #friend = pygame.transform.scale(friend, (20,40))
-
 #game loop
 while True:
     #clear screen
     screen.fill(0)
     #draw screen things
-    bg = pygame.transform.scale(bg, (2000, 2000))
+    #bg = pygame.transform.scale(bg, (1000, 1000))
     screen.blit(bg,screenPos)
-    friendView = pygame.transform.scale(friendView, (20,40))
-    screen.blit(friendView,(100-(friendRect[2]/2),100-(friendRect[3]/2)))
+    #friendView = pygame.transform.scale(friendView, (20,40))
+    screen.blit(friendView,(playerPos))
+    #screen.blit(friendView,(width/2-(friendRect[2]/2),height/2-(friendRect[3]/2)))
+    screen.blit(quackView,(quackPos[0]+screenPos[0],quackPos[1]+screenPos[1]))
     #update screen
     pygame.display.flip()
+    
     #events
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
@@ -109,10 +118,11 @@ while True:
                 keys[4]=False
             elif event.key==pygame.K_LSHIFT:
                 keys[5]=False
+    #things that the keys actually do
     if keys[5]:
-        pSpeed = 1
+        pSpeed = 3
     else:
-        pSpeed = .5
+        pSpeed = 1
     if keys[0] or keys[1] or keys[2] or keys[3]:
         if friend.get_facing() == True:
             #how to make counter update after certain change in time
@@ -169,9 +179,9 @@ while True:
             paused=True
             #rect = curMessage.getRect()
             curMessage = font.render(text,True, BLACK)
-            screen.blit(curMessage, (playerPos[0]+10,playerPos[1]-10))
+            screen.blit(curMessage, (playerPos[0]+friendRect[0],playerPos[1]+friendRect[1]))
             curMessage = font.render(text,True, WHITE)
-            screen.blit(curMessage, (playerPos[0]+11,playerPos[1]-9))
+            screen.blit(curMessage, (playerPos[0]+friendRect[0]+1,playerPos[1]+friendRect[1]+1))
             pygame.display.flip()
             time.sleep(1)
     #pygame.time.Clock().tick(500) 
