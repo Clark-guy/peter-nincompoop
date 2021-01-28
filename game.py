@@ -20,7 +20,7 @@ width, height = settings.screen_width, settings.screen_height
 keys = [False,False,False,False,False,False]
 paused = False
 screen = pygame.display.set_mode((width, height))
-bg = pygame.image.load("resources/bg.png")
+bg = pygame.image.load("resources/bg1.png")
 text = "hello"
 font = pygame.font.Font(None, 24)
 #curMessage = font.render(text,True, WHITE)
@@ -70,7 +70,9 @@ while True:
     #clear screen
     screen.fill(0)
     #draw screen things
+    bg = pygame.transform.scale(bg, (2000, 2000))
     screen.blit(bg,screenPos)
+    friendView = pygame.transform.scale(friendView, (20,40))
     screen.blit(friendView,(100-(friendRect[2]/2),100-(friendRect[3]/2)))
     #update screen
     pygame.display.flip()
@@ -123,6 +125,7 @@ while True:
             else:
                 friend.set_last_updated(friend.get_last_updated()+1)
             friendView = pygame.image.load(friendSprites[counter])
+            #friendView = pygame.transform.scale(friendView, (20,40))
             #time.sleep(.1)
         else:
             if (friend.get_last_updated() >= 10):
