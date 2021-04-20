@@ -2,7 +2,7 @@
 
 
 class person(object):
-    def __init__(self, name, brave, maxHealth, health, sprite, facingLeft):
+    def __init__(self, name, brave, maxHealth, health, sprite, facingLeft, pos):
         self.name = name
         self.brave = brave
         self.maxHealth = maxHealth
@@ -10,6 +10,7 @@ class person(object):
         self.sprite = sprite
         self.facingLeft = facingLeft
         self.lastUpdated = 0
+        self.pos = pos
 
     def get_brave(self):
         return self.brave
@@ -35,11 +36,17 @@ class person(object):
     def set_last_updated(self, value):
         self.lastUpdated = value
 
+    def get_pos(self):
+        return self.pos
+
+    def set_pos(self, value):
+        self.pos = value
+
 class player(person):
-    def __init__(self, name, brave, maxHealth, health, sprite, facingLeft):
-        super().__init__(name, brave, maxHealth, health, sprite, facingLeft)
+    def __init__(self, name, brave, maxHealth, health, sprite, facingLeft, pos):
+        super().__init__(name, brave, maxHealth, health, sprite, facingLeft, pos)
 
 class npc(person):
-    def __init__(self, name, brave, maxHealth, health, sprite, facingLeft):
-        super().__init__(name, brave, maxHealth, health, sprite, facingLeft)
+    def __init__(self, name, brave, maxHealth, health, sprite, facingLeft, pos):
+        super().__init__(name, brave, maxHealth, health, sprite, facingLeft, pos)
 
